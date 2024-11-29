@@ -1,10 +1,11 @@
 <?php
 
-$base = "eTeca";
+$base = "eteca";
 $conn = mysqli_connect("localhost", "root", "", $base);
 
 if ($conn) {
-    echo "Hola People!";
+    echo "Se conecta a la DB";
+    echo "<br>";
 } else {
     echo "Falló la conexión";
 }
