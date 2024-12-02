@@ -3,10 +3,10 @@
 include("conexion.php");
 
 $id = $_POST['id'];
-$sql = "DELETE FROM `usuarios` WHERE id='$id'";
+$sql = "SELECT * FROM `usuarios` WHERE id='$id'";
 
 if ( mysqli_query($conn, $sql)) {
-    header("location:../abmUsuarios.php");
+    header("location:../edit_usuario.php");
 } else {
     echo "Falló";
 }
