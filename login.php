@@ -124,12 +124,12 @@
             <h1 class="h3 mb-3 fw-normal">Ingreso</h1>
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="usuario" placeholder="Usuario">
-                <label for="floatingInput">Usuario</label>
+                <input type="text" class="form-control" id="usuario" placeholder="Usuario" name="usuario">
+                <label for="floatingInput" name="usuario">Usuario</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="psw" placeholder="Password">
-                <label for="floatingPassword">Contraseña</label>
+                <input type="password" class="form-control" id="psw" placeholder="Password" name="psw">
+                <label for="floatingPassword" name="psw">Contraseña</label>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit">Ingresar</button>
             <p class="mt-5 mb-3 text-body-secondary">© Grande Brunini Matias</p>
