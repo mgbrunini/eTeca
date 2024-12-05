@@ -21,6 +21,13 @@
             min-height: 100vh;
         }
 
+        /* header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        } */
+
         header {
             background-color: #4CAF50;
             color: white;
@@ -30,27 +37,25 @@
             align-items: center;
         }
 
-        header h1 {
-            font-size: 1.5rem;
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: #333;
+            padding: 0.5rem;
         }
 
-        .header-button a {
-            display: inline-block;
-            background-color: #4CAF50;
+        nav a {
             color: white;
             text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border: 2px solid white; /* Borde blanco para destacarse */
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+            transition: background-color 0.3s;
         }
 
-        .header-button a:hover {
-            background-color: #45a049;
-            border-color: #f5f5f5; /* Cambio de color del borde al hacer hover */
-            transform: scale(1.05);
+        nav a:hover {
+            background-color: #4CAF50;
         }
 
         main {
@@ -77,6 +82,45 @@
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
         }
 
+        .card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            color: white;
+            background-color: blue;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #45a049;
+        }
+
+        /* footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+        } */
+
         footer {
             background-color: #4CAF50;
             color: white;
@@ -96,30 +140,44 @@
 <body>
     <header>
         <h1>Sistema de Gestión de Bibliotecas</h1>
+
         <div class="header-button">
             <a href="login.php">Entrar</a>
         </div>
+
     </header>
+    <!-- <nav>
+        <a href="#catalogacion">Catalogación</a>
+        <a href="#prestamos">Préstamos</a>
+        <a href="#consultas">Consultas</a>
+        <a href="#estadisticas">Estadísticas</a>
+        <a href="#configuracion">Configuración</a>
+    </nav> -->
     <main>
         <div class="card" id="catalogacion">
             <h3>Catalogación</h3>
             <p>Gestione y clasifique los libros de la biblioteca.</p>
+            <!-- <a href="#">Entrar</a> -->
         </div>
         <div class="card" id="prestamos">
             <h3>Préstamos</h3>
             <p>Administre el registro de préstamos y devoluciones.</p>
+            <!-- <a href="#">Entrar</a> -->
         </div>
         <div class="card" id="consultas">
             <h3>Consultas</h3>
             <p>Permita a los usuarios buscar y consultar libros.</p>
+            <!-- <a href="#">Entrar</a> -->
         </div>
         <div class="card" id="estadisticas">
             <h3>Estadísticas</h3>
             <p>Revise estadísticas del uso de la biblioteca.</p>
+            <!-- <a href="#">Entrar</a> -->
         </div>
         <div class="card" id="configuracion">
             <h3>Configuración</h3>
             <p>Configure los ajustes del sistema.</p>
+            <!-- <a href="#">Entrar</a> -->
         </div>
     </main>
     <footer>

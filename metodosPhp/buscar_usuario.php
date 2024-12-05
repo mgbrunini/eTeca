@@ -1,14 +1,41 @@
 <?php
-
+// Incluye la conexión a la base de datos
 include("conexion.php");
 
-$id = $_POST['id'];
-$sql = "SELECT * FROM `usuarios` WHERE id='$id'";
+// Verifica si el parámetro 'id' fue proporcionado
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']); // Sanitiza el ID recibido
 
-if ( mysqli_query($conn, $sql)) {
-    header("location:../edit_usuario.php");
+    // Prepara la consulta SQL
+    $query = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+    if (!$query) {
+        die("Error en la preparación de la consulta: " . $conn->error);
+    }
+
+    // Vincula los parámetros
+    $query->bind_param("i", $id);
+
+    // Ejecuta la consulta
+    $query->execute();
+
+    // Obtiene el resultado
+    $resultado = $query->get_result();
+
+    // Verifica si hay datos
+    if ($resultado->num_rows > 0) {
+        $usuario = $resultado->fetch_assoc();
+
+        // Inicia sesión para almacenar los datos temporalmente
+        session_start();
+        $_SESSION['usuario_editar'] = $usuario;
+
+        // Redirige al formulario de edición
+        header("Location: ../edit_usuario.php");
+        exit();
+    } else {
+        // Si el usuario no se encuentra
+        echo "Usuario no encontrado.";
+    }
 } else {
-    echo "Falló";
+    echo "ID de usuario no proporcionado.";
 }
-
-?>

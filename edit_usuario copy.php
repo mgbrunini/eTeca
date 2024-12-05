@@ -1,24 +1,10 @@
-<?php
-session_start();
-
-// Verifica si se cargaron los datos del usuario desde la sesión
-if (!isset($_SESSION['usuario_editar'])) {
-    // Si no hay datos en la sesión, redirige a la página de gestión de usuarios
-    header("Location: abmUsuarios.php");
-    exit();
-}
-
-// Carga los datos del usuario
-$usuario = $_SESSION['usuario_editar'];
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Usuario</title>
+    <title>Crear Usuario</title>
     <style>
         * {
             margin: 0;
@@ -137,34 +123,33 @@ $usuario = $_SESSION['usuario_editar'];
 
     <main>
         <div class="form-container">
-            <h2>Editar Usuario</h2>
+            <h2>Crear Usuario</h2>
             <form action="metodosPhp/editar_usuario.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
                 <div class="form-group">
                     <label for="usuario">Usuario</label>
-                    <input type="text" id="usuario" name="usuario" value="<?php echo htmlspecialchars($usuario['usuario']); ?>" required>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ingresa el nombre de usuario" required>
                 </div>
                 <div class="form-group">
                     <label for="contraseña">Contraseña</label>
-                    <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa una nueva contraseña">
+                    <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa una contraseña" required>
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre" required>
                 </div>
                 <div class="form-group">
                     <label for="apellido">Apellido</label>
-                    <input type="text" id="apellido" name="apellido" value="<?php echo htmlspecialchars($usuario['apellido']); ?>" required>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingresa el apellido" required>
                 </div>
                 <div class="form-group">
                     <label for="dni">DNI</label>
-                    <input type="text" id="dni" name="dni" value="<?php echo htmlspecialchars($usuario['dni']); ?>" required>
+                    <input type="text" id="dni" name="dni" placeholder="Ingresa el DNI" required>
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo</label>
-                    <input type="email" id="correo" name="correo" value="<?php echo htmlspecialchars($usuario['correo']); ?>" required>
+                    <input type="email" id="correo" name="correo" placeholder="Ingresa el correo electrónico" required>
                 </div>
-                <button type="submit" class="btn-submit">Guardar Cambios</button>
+                <button type="submit" class="btn-submit">Crear Usuario</button>
                 <a href="abmUsuarios.php" class="btn-cancel">Cancelar</a>
             </form>
         </div>

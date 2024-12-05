@@ -99,10 +99,32 @@ if (isset($_SESSION['nombre'])) {
             }
 
             footer {
-                text-align: center;
-                padding: 1rem;
-                background-color: #333;
+                background-color: #4CAF50;
                 color: white;
+                text-align: center;
+                padding: 1rem 0;
+                margin-top: auto;
+            }
+
+            .header-button a {
+                display: inline-block;
+                background-color: #4CAF50;
+                color: white;
+                text-decoration: none;
+                padding: 0.8rem 1.5rem;
+                border: 2px solid white;
+                /* Borde blanco para destacarse */
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: bold;
+                transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+            }
+
+            .header-button a:hover {
+                background-color: #45a049;
+                border-color: #f5f5f5;
+                /* Cambio de color del borde al hacer hover */
+                transform: scale(1.05);
             }
         </style>
     </head>
@@ -111,7 +133,8 @@ if (isset($_SESSION['nombre'])) {
         <header>
             <h1>Sistema de Gestión de Bibliotecas</h1>
             <div class="header-button">
-                <a href="login.php">Entrar</a>
+                <a href="dashboard.php">Inicio</a>
+                <a href="metodosPhp/cerrarSesion.php">Salir</a>
             </div>
         </header>
 
@@ -138,7 +161,7 @@ if (isset($_SESSION['nombre'])) {
         </main>
 
         <footer>
-            <p>&copy; 2024 Sistema de Gestión de Bibliotecas</p>
+            <p>&copy; 2024 Sistema de Gestión de Bibliotecas. Todos los derechos reservados.</p>
         </footer>
 
         <script>

@@ -9,87 +9,125 @@ if (isset($_SESSION['nombre'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catálogo de Libros</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <title>Sistema de Gestión de Bibliotecas</title>
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
             body {
-                background-color: #f8f9fa;
+                background-color: #f5f5f5;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
             }
 
-            .book-card {
-                margin: 15px 0;
-                transition: transform 0.2s;
-            }
-
-            .book-card:hover {
-                transform: scale(1.05);
-            }
-
-            .footer {
-                background-color: #343a40;
+            header {
+                background-color: #4CAF50;
                 color: white;
-                padding: 20px 0;
+                padding: 1rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            header h1 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                margin: 0 1rem;
+                font-size: 1rem;
+            }
+
+            nav a:hover {
+                text-decoration: underline;
+            }
+
+            .container {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 text-align: center;
+            }
+
+            .button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 1rem 2rem;
+                margin: 1rem;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1.2rem;
+                transition: background-color 0.3s;
+            }
+
+            .button:hover {
+                background-color: #45a049;
+            }
+
+            footer {
+                background-color: #4CAF50;
+                color: white;
+                text-align: center;
+                padding: 1rem 0;
+                margin-top: auto;
+            }
+
+            .header-button a {
+                display: inline-block;
+                background-color: #4CAF50;
+                color: white;
+                text-decoration: none;
+                padding: 0.8rem 1.5rem;
+                border: 2px solid white;
+                /* Borde blanco para destacarse */
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: bold;
+                transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+            }
+
+            .header-button a:hover {
+                background-color: #45a049;
+                border-color: #f5f5f5;
+                /* Cambio de color del borde al hacer hover */
+                transform: scale(1.05);
             }
         </style>
     </head>
 
     <body>
-        <header class="bg-primary text-white text-center py-5">
-            <h1>Catálogo de Libros</h1>
-            <p>Descubre tus próximos libros favoritos</p>
+        <header>
+            <h1>Sistema de Gestión de Bibliotecas</h1>
+            <div class="header-button">
+                <a href="dashboard.php">Inicio</a>
+                <a href="metodosPhp/cerrarSesion.php">Salir</a>
+            </div>
         </header>
-        <div class="container mt-4">
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card book-card">
-                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Libro 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Título del Libro 1</h5>
-                            <p class="card-text">Descripción breve del libro 1.</p>
-                            <a href="#" class="btn btn-primary">Leer más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card book-card">
-                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Libro 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Título del Libro 2</h5>
-                            <p class="card-text">Descripción breve del libro 2.</p>
-                            <a href="#" class="btn btn-primary">Leer más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card book-card">
-                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Libro 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Título del Libro 3</h5>
-                            <p class="card-text">Descripción breve del libro 3.</p>
-                            <a href="#" class="btn btn-primary">Leer más</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container">
+            <h2>Seleccione una opción</h2>
+            <button class="button" onclick="location.href='carga_libros.html'">Carga de Libros</button>
+            <button class="button" onclick="location.href='abmUsuarios.php'">ABM de Usuarios</button>
         </div>
-
-        <footer class="footer mt-5">
-            <div class="container">
-                <p>© 2023 Catálogo de Libros. Todos los derechos reservados.</p>
-            </div>
+        <footer>
+            <p>&copy; 2024 Sistema de Gestión de Bibliotecas. Todos los derechos reservados.</p>
         </footer>
-
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 
     </html>
+
+
 
 <?php
 
