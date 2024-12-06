@@ -117,7 +117,7 @@ if (isset($_SESSION['nombre'])) {
         </header>
         <div class="container">
             <h2>Seleccione una opción</h2>
-            <button class="button" onclick="location.href='carga_libros.html'">Carga de Libros</button>
+            <button class="button" onclick="location.href='carga_libros.php'">Carga de Libros</button>
             <button class="button" onclick="location.href='abmUsuarios.php'">ABM de Usuarios</button>
         </div>
         <footer>
