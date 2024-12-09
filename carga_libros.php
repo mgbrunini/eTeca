@@ -10,6 +10,7 @@ if (isset($_SESSION['nombre'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sistema de Gestión de Bibliotecas</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <style>
             /* Estilos existentes */
             * {
@@ -79,7 +80,7 @@ if (isset($_SESSION['nombre'])) {
                 background-color: #4CAF50;
                 color: white;
             }
-
+/* 
             table td .icon {
                 cursor: pointer;
                 margin: 0 0.5rem;
@@ -90,7 +91,7 @@ if (isset($_SESSION['nombre'])) {
 
             table td .icon:hover {
                 color: #4CAF50;
-            }
+            } */
 
             footer {
                 background-color: #4CAF50;
@@ -144,6 +145,24 @@ if (isset($_SESSION['nombre'])) {
                 border-color: #f5f5f5;
                 /* Cambio de color del borde al hacer hover */
                 transform: scale(1.05);
+            }
+
+            .icon {
+                cursor: pointer;
+                margin: 0 5px;
+                color: #666;
+            }
+
+            .icon:hover {
+                color: #333;
+            }
+
+            .icon-trash {
+                color: red;
+            }
+
+            .icon-edit {
+                color: blue;
             }
         </style>
     </head>
@@ -205,11 +224,11 @@ if (isset($_SESSION['nombre'])) {
             }
 
             function editarLibro(id) {
-                window.location.href = `metodosPhp/editar_libro.php?id=${id}`;
+                window.location.href = `metodosPhp/buscar_libro.php?id=${id}`;
             }
 
             function detallesLibro(id) {
-                window.location.href = `metodosPhp/detalles_libro.php?id=${id}`;
+                window.location.href = `metodosPhp/detail_libro.php?id=${id}`;
             }
 
             function cargarLibros() {
@@ -230,12 +249,12 @@ if (isset($_SESSION['nombre'])) {
                                 tableBody.innerHTML += `
                                 <tr>
                                     <td>${book.genero}</td>
-                                    <td>${book.nombre}</td>
+                                    <td>${book.nomlibro}</td>
                                     <td>${book.autor}</td>
                                     <td>
                                         <i class="icon fas fa-eye" onclick="detallesLibro(${book.id})" title="Detalles"></i>
-                                        <i class="icon fas fa-edit" onclick="editarLibro(${book.id})" title="Editar"></i>
-                                        <i class="icon fas fa-trash" onclick="eliminarLibro(${book.id})" title="Eliminar"></i>
+                                        <i class="icon icon-edit fas fa-edit" onclick="editarLibro(${book.id})" title="Editar"></i>
+                                        <i class="icon icon-trash fas fa-trash" onclick="eliminarLibro(${book.id})" title="Eliminar"></i>
                                     </td>
                                 </tr>
                             `;
