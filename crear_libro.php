@@ -89,6 +89,15 @@ if (isset($_SESSION['nombre'])) {
                 resize: vertical;
             }
 
+            .form-group img {
+                display: block;
+                margin: 1rem auto;
+                max-width: 100%;
+                max-height: 200px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
             .btn-submit {
                 padding: 0.8rem 1.5rem;
                 background-color: #4CAF50;
@@ -135,7 +144,6 @@ if (isset($_SESSION['nombre'])) {
                 text-decoration: none;
                 padding: 0.8rem 1.5rem;
                 border: 2px solid white;
-                /* Borde blanco para destacarse */
                 border-radius: 5px;
                 font-size: 1rem;
                 font-weight: bold;
@@ -145,7 +153,6 @@ if (isset($_SESSION['nombre'])) {
             .header-button a:hover {
                 background-color: #45a049;
                 border-color: #f5f5f5;
-                /* Cambio de color del borde al hacer hover */
                 transform: scale(1.05);
             }
         </style>
@@ -162,7 +169,7 @@ if (isset($_SESSION['nombre'])) {
         <main>
             <div class="form-container">
                 <h2>Registrar Libro</h2>
-                <form action="metodosPhp/guardar_libro.php" method="POST">
+                <form action="metodosPhp/guardar_libro.php" enctype="multipart/form-data" method="POST">
                     <div class="form-group">
                         <label for="nombre_libro">Nombre del libro</label>
                         <input type="text" id="nombre_libro" name="nombre_libro" placeholder="Ingresa el nombre del libro" required>
@@ -183,6 +190,11 @@ if (isset($_SESSION['nombre'])) {
                         <label for="cantidad_paginas">Cantidad de páginas</label>
                         <input type="number" id="cantidad_paginas" name="cantidad_paginas" placeholder="Ingresa la cantidad de páginas" required>
                     </div>
+                    <div class="form-group">
+                        <label for="img">Portada del libro (imagen)</label>
+                        <input type="file" name="img" id="img" accept="image/*" required>
+                        <img id="preview" src="#" alt="Previsualización de la portada" style="display: none;">
+                    </div>
                     <button type="submit" class="btn-submit">Registrar Libro</button>
                     <a href="carga_libros.php" class="btn-cancel">Cancelar</a>
                 </form>
@@ -192,6 +204,26 @@ if (isset($_SESSION['nombre'])) {
         <footer>
             <p>&copy; 2024 Sistema de Gestión de Bibliotecas</p>
         </footer>
+
+        <script>
+            const imgInput = document.getElementById('img');
+            const preview = document.getElementById('preview');
+
+            imgInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.src = '#';
+                    preview.style.display = 'none';
+                }
+            });
+        </script>
     </body>
 
     </html>

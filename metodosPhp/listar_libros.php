@@ -3,7 +3,7 @@
 include("conexion.php");
 
 // Prepara la consulta SQL
-$sql = "SELECT id, nomlibro, reseña, genero, autor, cantpag FROM libros";
+$sql = "SELECT id, nomlibro, reseña, genero, autor, cantpag, img FROM libros2";
 $consulta = mysqli_query($conn, $sql);
 
 // Verifica si la consulta se ejecutó correctamente

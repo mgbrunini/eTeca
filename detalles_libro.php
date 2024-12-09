@@ -77,7 +77,13 @@ if (isset($_SESSION['nombre'])) {
                 width: 100%;
                 max-width: 600px;
                 margin: 2rem auto;
-                text-align: left;
+                display: flex;
+                gap: 1rem;
+            }
+
+            /* Contenedor del texto */
+            .text-container {
+                flex: 1;
             }
 
             .detail-item {
@@ -111,6 +117,21 @@ if (isset($_SESSION['nombre'])) {
                 margin-top: 2rem;
             }
 
+            /* Imagen */
+            .image-container {
+                flex-shrink: 0;
+                width: 150px;
+                height: 200px;
+            }
+
+            .image-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
             /* Footer */
             footer {
                 background-color: #4CAF50;
@@ -132,25 +153,32 @@ if (isset($_SESSION['nombre'])) {
         </header>
 
         <div class="container">
-            <div class="detail-item">
-                <span>Nombre del Libro:</span> <?php echo htmlspecialchars($libro['nomlibro']); ?>
-            </div>
-            <div class="detail-item">
-                <span>Autor:</span> <?php echo htmlspecialchars($libro['autor']); ?>
-            </div>
-            <div class="detail-item">
-                <span>Género:</span> <?php echo htmlspecialchars($libro['genero']); ?>
-            </div>
-            <div class="detail-item">
-                <span>Cantidad de páginas:</span> <?php echo htmlspecialchars($libro['cantpag']); ?>
-            </div>
-            <div class="detail-item">
-                <span>Descripción:</span> <?php echo htmlspecialchars($libro['reseña']); ?>
+            <!-- Contenedor de la imagen -->
+            <div class="image-container">
+                <img src="<?php echo htmlspecialchars($libro['img']); ?>" alt="Portada del libro">
             </div>
 
+            <!-- Contenedor del texto -->
+            <div class="text-container">
+                <div class="detail-item">
+                    <span>Nombre del Libro:</span> <?php echo htmlspecialchars($libro['nomlibro']); ?>
+                </div>
+                <div class="detail-item">
+                    <span>Autor:</span> <?php echo htmlspecialchars($libro['autor']); ?>
+                </div>
+                <div class="detail-item">
+                    <span>Género:</span> <?php echo htmlspecialchars($libro['genero']); ?>
+                </div>
+                <div class="detail-item">
+                    <span>Cantidad de páginas:</span> <?php echo htmlspecialchars($libro['cantpag']); ?>
+                </div>
+                <div class="detail-item">
+                    <span>Descripción:</span> <?php echo htmlspecialchars($libro['reseña']); ?>
+                </div>
 
-            <div class="btn-container">
-                <a href="carga_libros.php" class="btn-back">Atrás</a>
+                <div class="btn-container">
+                    <a href="carga_libros.php" class="btn-back">Atrás</a>
+                </div>
             </div>
         </div>
 

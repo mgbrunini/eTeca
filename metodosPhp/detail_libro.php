@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $id = intval($_GET['id']); // Sanitiza el ID recibido
 
     // Prepara la consulta SQL
-    $query = $conn->prepare("SELECT * FROM libros WHERE id = ?");
+    $query = $conn->prepare("SELECT * FROM libros2 WHERE id = ?");
     if (!$query) {
         die("Error en la preparación de la consulta: " . $conn->error);
     }

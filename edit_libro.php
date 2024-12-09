@@ -69,12 +69,15 @@ if (isset($_SESSION['nombre'])) {
 
             .form-group {
                 margin-bottom: 1.5rem;
+                text-align: center;
+                /* Centra los elementos dentro del grupo */
             }
 
             .form-group label {
                 display: block;
                 font-weight: bold;
                 margin-bottom: 0.5rem;
+                text-align: left;
             }
 
             .form-group input,
@@ -88,6 +91,17 @@ if (isset($_SESSION['nombre'])) {
 
             .form-group textarea {
                 resize: vertical;
+            }
+
+            .form-group img {
+                display: block;
+                margin: 1rem auto;
+                /* Centra horizontalmente */
+                max-width: 100%;
+                max-height: 200px;
+                /* Límite de altura */
+                border-radius: 4px;
+                border: 1px solid #ccc;
             }
 
             .btn-submit,
@@ -133,27 +147,6 @@ if (isset($_SESSION['nombre'])) {
                 padding: 1rem 0;
                 margin-top: 2rem;
             }
-
-            .header-button a {
-                display: inline-block;
-                background-color: #4CAF50;
-                color: white;
-                text-decoration: none;
-                padding: 0.8rem 1.5rem;
-                border: 2px solid white;
-                /* Borde blanco para destacarse */
-                border-radius: 5px;
-                font-size: 1rem;
-                font-weight: bold;
-                transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
-            }
-
-            .header-button a:hover {
-                background-color: #45a049;
-                border-color: #f5f5f5;
-                /* Cambio de color del borde al hacer hover */
-                transform: scale(1.05);
-            }
         </style>
     </head>
 
@@ -168,13 +161,12 @@ if (isset($_SESSION['nombre'])) {
         <main>
             <div class="form-container">
                 <h2>Editar Libro</h2>
-                <form action="metodosPhp/actualizar_libro.php" method="POST">
+                <form action="metodosPhp/actualizar_libro.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= htmlspecialchars($libro['id']) ?>">
 
                     <div class="form-group">
                         <label for="nomlibro">Nombre del libro</label>
-                        <input type="text" id="nomlibro" name="nomlibro"
-                            value="<?= htmlspecialchars($libro['nomlibro']) ?>" required>
+                        <input type="text" id="nomlibro" name="nomlibro" value="<?= htmlspecialchars($libro['nomlibro']) ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="reseña">Reseña</label>
@@ -182,18 +174,20 @@ if (isset($_SESSION['nombre'])) {
                     </div>
                     <div class="form-group">
                         <label for="genero">Género</label>
-                        <input type="text" id="genero" name="genero"
-                            value="<?= htmlspecialchars($libro['genero']) ?>" required>
+                        <input type="text" id="genero" name="genero" value="<?= htmlspecialchars($libro['genero']) ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="autor">Autor</label>
-                        <input type="text" id="autor" name="autor"
-                            value="<?= htmlspecialchars($libro['autor']) ?>" required>
+                        <input type="text" id="autor" name="autor" value="<?= htmlspecialchars($libro['autor']) ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="cantpag">Cantidad de páginas</label>
-                        <input type="number" id="cantpag" name="cantpag"
-                            value="<?= htmlspecialchars($libro['cantpag']) ?>" required>
+                        <input type="number" id="cantpag" name="cantpag" value="<?= htmlspecialchars($libro['cantpag']) ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="img">Imagen</label>
+                        <input type="file" id="img" name="img" accept="image/*">
+                        <img id="preview" src="<?= htmlspecialchars($libro['img']) ?>" alt="Imagen actual">
                     </div>
                     <button type="submit" class="btn-submit">Actualizar Libro</button>
                     <a href="carga_libros.php" class="btn-cancel">Cancelar</a>
@@ -204,6 +198,22 @@ if (isset($_SESSION['nombre'])) {
         <footer>
             <p>&copy; 2024 Sistema de Gestión de Bibliotecas</p>
         </footer>
+
+        <script>
+            const imgInput = document.getElementById('img');
+            const preview = document.getElementById('preview');
+
+            imgInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        preview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
     </body>
 
     </html>
