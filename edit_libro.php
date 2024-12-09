@@ -147,6 +147,25 @@ if (isset($_SESSION['nombre'])) {
                 padding: 1rem 0;
                 margin-top: 2rem;
             }
+
+            .header-button a {
+                display: inline-block;
+                background-color: #4CAF50;
+                color: white;
+                text-decoration: none;
+                padding: 0.8rem 1.5rem;
+                border: 2px solid white;
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: bold;
+                transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+            }
+
+            .header-button a:hover {
+                background-color: #45a049;
+                border-color: #f5f5f5;
+                transform: scale(1.05);
+            }
         </style>
     </head>
 
@@ -170,7 +189,8 @@ if (isset($_SESSION['nombre'])) {
                     </div>
                     <div class="form-group">
                         <label for="reseña">Reseña</label>
-                        <textarea id="reseña" name="reseña" rows="4" required><?= htmlspecialchars($libro['reseña']) ?></textarea>
+                        <textarea id="reseña" name="reseña" rows="4" maxlength="220" oninput="updateCounter()" required><?= htmlspecialchars($libro['reseña']) ?></textarea>
+                        <p id="char-count">0/220 caracteres</p> <!-- Contador de caracteres -->
                     </div>
                     <div class="form-group">
                         <label for="genero">Género</label>
@@ -200,6 +220,19 @@ if (isset($_SESSION['nombre'])) {
         </footer>
 
         <script>
+            // Función para actualizar el contador de caracteres
+            function updateCounter() {
+                var textArea = document.getElementById("reseña");
+                var counter = document.getElementById("char-count");
+                counter.textContent = textArea.value.length + "/220 caracteres"; // Muestra el número de caracteres actuales
+            }
+
+            // Inicializa el contador cuando la página carga
+            document.addEventListener("DOMContentLoaded", function() {
+                updateCounter(); // Llama a la función para mostrar el contador desde el inicio
+            });
+
+            // Actualiza la vista previa de la imagen cuando se selecciona un archivo
             const imgInput = document.getElementById('img');
             const preview = document.getElementById('preview');
 

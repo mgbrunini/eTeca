@@ -176,7 +176,8 @@ if (isset($_SESSION['nombre'])) {
                     </div>
                     <div class="form-group">
                         <label for="resena">Reseña</label>
-                        <textarea id="resena" name="resena" rows="4" placeholder="Escribe una breve reseña" required></textarea>
+                        <textarea id="resena" name="resena" rows="4" placeholder="Escribe una breve reseña" maxlength="220" required oninput="updateCounter()"></textarea>
+                        <p id="char-count">0/220 caracteres</p> <!-- Contador de caracteres -->
                     </div>
                     <div class="form-group">
                         <label for="genero">Género</label>
@@ -206,6 +207,19 @@ if (isset($_SESSION['nombre'])) {
         </footer>
 
         <script>
+            // Función para actualizar el contador de caracteres
+            function updateCounter() {
+                var textArea = document.getElementById("resena");
+                var counter = document.getElementById("char-count");
+                counter.textContent = textArea.value.length + "/220 caracteres"; // Muestra el número de caracteres actuales
+            }
+
+            // Inicializa el contador cuando la página carga
+            document.addEventListener("DOMContentLoaded", function() {
+                updateCounter(); // Llama a la función para mostrar el contador desde el inicio
+            });
+
+            // Función para previsualizar la imagen seleccionada
             const imgInput = document.getElementById('img');
             const preview = document.getElementById('preview');
 
