@@ -119,10 +119,30 @@ $usuario = $_SESSION['usuario_editar'];
         }
 
         footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #333;
+            background-color: #4CAF50;
             color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        .header-button a {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+        }
+
+        .header-button a:hover {
+            background-color: #45a049;
+            border-color: #f5f5f5;
+            transform: scale(1.05);
         }
     </style>
 </head>
